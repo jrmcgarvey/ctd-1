@@ -30,9 +30,7 @@ def main
     end
     puts "Sum: #{sum}"
   else
-     string_array.sum do |string|
-       string.count("e") # count how many times the letter 'e' appears in your strings
-     end
+     puts "Your array of strings contains #{string_array.sum { |s| s.count('e') }} of the letter 'e'"
   end
 
   # output average
