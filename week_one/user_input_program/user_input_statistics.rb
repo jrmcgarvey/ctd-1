@@ -24,10 +24,16 @@ def main
 
   # output sum
   sum = 0
-  int_array.each do |int|
-    sum += int
+  if int_array != []
+    int_array.each do |int|
+      sum += int
+    end
+    puts "Sum: #{sum}"
+  else
+     string_array.sum do |string|
+       string.count("e") # count how many times the letter 'e' appears in your strings
+     end
   end
-  puts "Sum: #{sum}" if int_array != []
 
   # output average
   puts "Average: #{sum / int_array.count}" if int_array != []
