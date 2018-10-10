@@ -1,3 +1,5 @@
+require 'pry'
+
 class Game
   attr_reader :rounds, :wins, :losses, :draws # allows me to access variables publicly
 
@@ -24,5 +26,4 @@ class Game
         puts 'Draw.'
       end
   end
-
 end
