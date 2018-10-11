@@ -1,7 +1,3 @@
-require "pry"
-
-require_relative "game"
-
 class Roshambo < Game
   attr_reader :choices, :round, :wins, :losses, :draws, :player_choice, :ai_choice
   attr_writer :player_choice, :ai_choice, :wins, :losses, :draws # allows me to rewrite variables
