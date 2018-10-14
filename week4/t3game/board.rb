@@ -31,11 +31,11 @@ class Board
             puts "Those are not valid coordinates, which must be a pair, each from 0 to 2." 
             return false
         end
-        if @board[coordinates[0]][coordinates[1]] != " "
+        if @board[coordinates[1]][coordinates[0]] != " "
             puts "That spot is taken."
             return false
         end
-        @board[coordinates[0]][coordinates[1]]=piece
+        @board[coordinates[1]][coordinates[0]]=piece
         true
     end
     
