@@ -79,15 +79,18 @@ class Machine
             end
             r
         end
-        # puts "best guess so far is " + (@guesses[0][0]).to_s
+        #puts "best guess so far is " + (@guesses[0][0]).to_s + "   " + (@guesses[0][1]).to_s
         newguess=transmute(@guesses[0])
-        100.times do 
+        for i in 1..500 
             if matches_previous(newguess)
                 #puts "Got Here!"
                 break
             else
                 newguess=transmute(@guesses[0])
             end
+        end
+        if i==500
+            puts "oops, bad guess"
         end
 #        puts "at line 73 newguess is " + newguess.to_s
         return newguess
@@ -141,19 +144,12 @@ class Machine
                     newguess.insert(target,fixed_color)
                 end
             when 2 # pick two of the same, moved, and 2 different
-                fixed1=rand(4)
-                fixed2=rand(4)
-                while fixed2==fixed1
-                    fixed2=rand(4)
+                newguess.shuffle!
+                i=rand(4)
+                j=rand(4)
+                while i==j
+                    j=rand(4)
                 end
-                fixed_color1=newguess.at(fixed1)
-                fixed_color2=newguess.at(fixed2)
-                newguess[fixed1]=fixed_color2
-                newguess[fixed2]=fixed_color1
-                #that swaps two positions, now we need different colors for the other two
-                a=[0,1,2,3]-[fixed1,fixed2]
-                i=a[0] # get the other two values
-                j=a[1]
                 colors=Board::Colors-[newguess[i],newguess[j]]
                 newguess[i]=colors[rand(colors.length)]
                 newguess[j]=colors[rand(colors.length)]
@@ -188,8 +184,9 @@ class Machine
             fixed2=rand(4)
         end
         a=[0,1,2,3]-[fixed1,fixed2]
-        i=a[0] # get the other two values
-        j=a[1]
+        i=a[rand(2)] # get the other two values
+        a=a-[i]
+        j=a[0]
         case guess[1][1]
             when 0
                 colors=Board::Colors-[newguess[i],newguess[j]]
