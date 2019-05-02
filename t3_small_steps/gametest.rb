@@ -14,7 +14,7 @@ board.add_piece(:o,[1,0])
 board.render
 open=board.coordinates_available?([0,0])
 puts "now 0,0 is taken" if !open
-
+=begin
 #test 3
 rows=board.rows
 rows.each { |row| puts row.to_s}
@@ -66,3 +66,4 @@ end
 f=board.full?
 
 puts "found a full board" if f
+=end

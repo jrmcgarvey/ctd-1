@@ -12,7 +12,7 @@ class Board
         s1=state.clone
         g1=guess.clone
         right=near=0
-        g2=g1
+        g2=g1.clone
         g1.each_with_index do |val, i|
             if val==s1[i] 
                 right+=1
